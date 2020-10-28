@@ -108,4 +108,3 @@ while True:
                 break
     else:
         missedLetters = missedLetters + guess
-
