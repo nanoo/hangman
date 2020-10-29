@@ -4,6 +4,36 @@ HANGMAN_PICS = ['''
       |
       |
       |
+     ===''', '''
+  +---+
+  O   |
+      |
+      |
+     ===''', '''
+  +---+
+  O   |
+  |   |
+      |
+     ===''', '''
+  +---+
+  O   |
+ /|   |
+      |
+     ===''','''
+  +---+
+  O   |
+ /|\  |
+      |
+     ===''', '''
+  +---+
+  O   |
+ /|\  |
+ /    |
+     ===''', '''
+  +---+
+  O   |
+ /|\  |
+ / \  |
      ===''']
 
 words = 'ant baboon badger bat bear beaver camel cat clam cobra cougar' \
@@ -67,4 +97,14 @@ while True:
     #  Let the player enter a letter.
     guess = getGuess(missedLetters + correctLetters)
 
-    break
+    if guess in secretWord:
+        correctLetters = correctLetters + guess
+
+        #  Check if the player has won.
+        foundAllLetters = True
+        for i in range(len(secretWord)):
+            if secretWord[i] not in correctLetters:
+                foundAllLetters = False
+                break
+    else:
+        missedLetters = missedLetters + guess
